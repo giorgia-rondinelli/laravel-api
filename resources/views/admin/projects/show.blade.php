@@ -1,0 +1,50 @@
+@extends('admin.home')
+@section('content')
+
+<div class="container mt-4 ">
+    <h1>{{$project->title}}</h1>
+    <div class="d-flex justify-content-between ">
+        <div class="d-flex">
+           <p>Data di creazione: {{$project->created_at}}</p>
+
+           @foreach($project->types as $type )
+                    <p class=" ms-2 badge text-bg-secondary">{{$type->name}}</p>
+
+
+            @endforeach
+
+        </div>
+
+        @if ($project->status)
+        <p class="badge text-bg-primary ">Pubblico</p>
+        @else
+        <p class="badge text-bg-primary ">Privato</p>
+        @endif
+
+    </div>
+
+    <h4>Descrizione:</h4>
+    <div class="mb-4">{{$project->description}}</div>
+    <h4>Linguaggio</h4>
+    <div>{{$project->languages}}</div>
+
+    <div><img src="{{asset('storage/'.$project->image)}}" alt=""></div>
+
+    <div class="d-flex">
+        <button class="btn btn-warning mt-5 me-3 "><a class="modifica" href="{{route('admin.projects.edit', $project)}}">Modifica</a> </button>
+         <form action="{{route('admin.projects.destroy' ,$project)}}" method="POST">
+        @csrf
+        @method('delete')
+
+        <button type="submit" class="btn btn-danger mt-5">Elimina </button>
+        </form
+    </div>
+
+
+
+
+
+
+
+</div>
+@endsection
