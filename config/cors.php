@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('APP_FRONTEND_URL','http://127.0.0.1:8000')],
+    'allowed_origins' => [env('APP_FRONTEND_URL','www.miosito.com')],
 
     'allowed_origins_patterns' => [],
 
