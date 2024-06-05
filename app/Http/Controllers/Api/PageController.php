@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {
@@ -22,4 +23,18 @@ class PageController extends Controller
         $types=Type::with('projects')->get();
         return response()->json($types);
     }
+    public function getProjectBySlug($slug){
+        $project=Project::where('slug',$slug)->with('technology','types')->first();
+
+            if($project->image){
+
+                $project->image=Storage::url($project->image);
+            }else{
+                $project->image=null;
+            }
+
+
+        return response()->json($project);
+    }
+
 }
