@@ -8,7 +8,7 @@
 
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" target="_blank" aria-current="page" href="{{route('home')}}">home</a>
+                    <a class="nav-link active" target="_blank" aria-current="page" href="{{route('home')}}"><i class="fa-solid fa-house text-white"></i></a>
                   </li>
                  </ul>
                 </div>
